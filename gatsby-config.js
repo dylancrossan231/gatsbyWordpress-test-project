@@ -11,7 +11,7 @@ module.exports = {
       resolve: `gatsby-source-wordpress`,
       options: {
         // Specify the URL of the WordPress source
-        url: `http://localhost/wordpress/graphql`,
+        url: `https://test.wspace.ie/graphql`,
         schema: {
           //Prefixes all WP Types with "Wp" so "Post and allPost" become "WpPost and allWpPost".
           typePrefix: `Wp`,
@@ -35,7 +35,7 @@ module.exports = {
         // Indicates if a site is hosted on WordPress.com
         hostingWPCOM: false,
         // Specify which URL structures to fetch
-        includedRoutes: ["/*/*/posts","/*/*/pages"],
+        includedRoutes: ["/*/*/posts", "/*/*/pages"],
       },
     },
 
