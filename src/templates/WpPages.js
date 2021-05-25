@@ -1,8 +1,8 @@
 import React from "react"
 import {graphql,StaticQuery} from "gatsby"
-const WpPost = ({
+const wpPage = ({
   data: {
-    wpPost: { title, content, id },
+    wpPage: { title, content, id },
   },
 }) => {
   return (
@@ -14,7 +14,7 @@ const WpPost = ({
 }
 export const query = StaticQuery(graphql`
   query($id: String) {
-    wpPost(id: { eq: $id }) {
+    wpPage(id: { eq: $id }) {
       id
       title
       content
@@ -23,4 +23,4 @@ export const query = StaticQuery(graphql`
 `)
 
 
-export default WpPost
+export default wpPage

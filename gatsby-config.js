@@ -35,7 +35,7 @@ module.exports = {
         // Indicates if a site is hosted on WordPress.com
         hostingWPCOM: false,
         // Specify which URL structures to fetch
-        includedRoutes: ["**/posts"],
+        includedRoutes: ["/*/*/posts","/*/*/pages"],
       },
     },
 

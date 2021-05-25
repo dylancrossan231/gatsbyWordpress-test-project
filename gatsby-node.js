@@ -1,10 +1,20 @@
+
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const result = await graphql(`
     query {
+      allWpPage {
+        nodes {
+          id
+          uri
+          title
+        }
+      }
+
       allWpPost {
         nodes {
           id
           uri
+          title
         }
       }
     }
@@ -14,17 +24,34 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   }
 
   const { allWpPost } = result.data
+  const { allWpPage } = result.data
   console.log(result.data)
   // Define the template to use
-  const template = require.resolve(`./src/templates/WpPosts.js`)
+  const postTemplate = require.resolve(`./src/templates/WpPosts.js`)
+    const pageTemplate = require.resolve(`./src/templates/WpPages.js`)
+
 
   if (allWpPost.nodes.length) {
     allWpPost.nodes.map(post => {
       actions.createPage({
         path: post.id,
-        component: template,
+        component: postTemplate,
         context: post,
       })
     })
   }
+
+  if (allWpPage.nodes.length) {
+    allWpPage.nodes.map(page => {
+      actions.createPage({
+        path: page.id,
+        component: pageTemplate,
+        context: page,
+      })
+    })
+  }
 }
+
+
+
+
